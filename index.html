@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>エアコンクリーニング × ブランドアパレル | 公式サイト</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.3/tailwind.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
@@ -53,13 +53,18 @@
 
       <!-- ロゴエリア（左） -->
       <!--
-        ロゴ画像の差し替え方法：
-        1. images/logo.svg（または .png）を新しいファイルに置き換える（ファイル名を変える場合は下のsrcも変更）
-        2. 比率が異なるロゴの場合は、上のCSS .logo-frame { aspect-ratio: ○/○; } を実際の画像の縦横比に合わせて調整
-        画像サイズの目安：横長ロゴ推奨。SVGなら透過背景で高画質。
+        ロゴ：外部ファイルに依存しないよう、SVGを直接埋め込んでいます（アップロード不要・リンク切れなし）。
+        画像ファイル（.png / .svg）に差し替えたい場合は、下の <svg>...</svg> を丸ごと削除して
+        <img src="images/logo.png" alt="scrub inc." class="h-full w-auto object-contain"> に置き換え、
+        images フォルダも一緒にリポジトリへアップロードしてください。
+        比率が違うロゴの場合は、上のCSS .logo-frame { aspect-ratio: ○/○; } を実際の縦横比に合わせて調整。
       -->
-      <a href="#top" id="logo-frame" class="logo-frame h-10 sm:h-12 flex items-center flex-shrink-0">
-        <img src="images/logo.svg" alt="scrub inc." class="h-full w-auto object-contain">
+      <a href="#top" id="logo-frame" class="logo-frame h-10 sm:h-12 flex items-center flex-shrink-0" aria-label="scrub inc. ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" class="h-full w-auto" role="img" aria-label="scrub inc.">
+          <text x="50%" y="120" font-family="'Montserrat', 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="900" fill="#245c84" text-anchor="middle" letter-spacing="-1">scrub inc.</text>
+          <text x="50%" y="165" font-family="'Arial Narrow', 'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="bold" font-stretch="condensed" fill="#245c84" letter-spacing="2" text-anchor="middle">AIR TREATMENT &amp; CLEANING</text>
+          <text x="50%" y="188" font-family="'Arial Narrow', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="normal" font-stretch="condensed" fill="#245c84" letter-spacing="0.5" text-anchor="middle">scrb.cleaning | @scrub.inc | TOKYO, JAPAN</text>
+        </svg>
       </a>
 
       <!-- ボタンエリア（右） -->
