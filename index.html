@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エアコンクリーニング × ブランドアパレル | 公式サイト</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.4.3/tailwind.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brandblue: {
+            50: '#eef6ff',
+            100: '#d9ecff',
+            500: '#2b7fff',
+            600: '#1c64f2',
+            700: '#1a56db',
+          },
+          brandblack: {
+            900: '#111318',
+            800: '#1b1e26',
+          }
+        },
+        fontFamily: {
+          sans: ['"Noto Sans JP"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; }
+  /* ロゴ画像枠：ロゴ本来の比率（600×250 ≒ 2.4:1）に合わせて固定。差し替え時もここを調整すれば崩れない */
+  .logo-frame {
+    aspect-ratio: 2.4 / 1;
+  }
+  .fade-in { animation: fadeIn 0.2s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+</style>
+</head>
+<body class="bg-white text-brandblack-900 antialiased">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+
+      <!-- ロゴエリア（左） -->
+      <a href="#top" id="logo-frame" class="logo-frame h-10 sm:h-12 flex items-center flex-shrink-0">
+        <img src="images/logo.svg" alt="scrub inc." class="h-full w-auto object-contain">
+      </a>
+
+      <!-- ボタンエリア（右） -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="#booking" class="inline-flex items-center justify-center rounded-full bg-brandblue-600 hover:bg-brandblue-700 text-white text-xs sm:text-sm font-bold px-3.5 sm:px-6 py-2 sm:py-2.5 shadow-md shadow-brandblue-600/20 transition whitespace-nowrap">
+          エアコン予約
+        </a>
+        <button type="button" onclick="openShopModal()" class="inline-flex items-center justify-center rounded-full bg-brandblack-900 hover:bg-brandblack-800 text-white text-xs sm:text-sm font-bold px-3.5 sm:px-6 py-2 sm:py-2.5 shadow-md transition whitespace-nowrap">
+          公式ショップ
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="top" class="h-16 sm:h-20"></div>
+
+<!-- HERO SECTION -->
+<section class="relative bg-gradient-to-b from-brandblack-900 via-brandblack-900 to-brandblue-700 text-white overflow-hidden">
+  ...（ヒーロー、カードA/B）
+</section>
+
+<!-- エアコンクリーニングセクション -->
+<section id="aircon" class="bg-white py-16 sm:py-24">
+  ...（特徴3選、料金表、予約フォーム #booking）
+</section>
+
+<!-- アパレルブランドチラ見せセクション -->
+<section id="apparel" class="bg-brandblack-900 text-white py-16 sm:py-24">
+  ...（アイテム画像枠4点、Shop Go / お知らせボタン）
+</section>
+
+<footer>...</footer>
+
+<!-- Coming Soonモーダル -->
+<div id="shop-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">...</div>
+
+<script>
+  function openShopModal() { ... }
+  function closeShopModal() { ... }
+  function handleBookingSubmit(e) { ... }
+</script>
+</body>
+</html>
