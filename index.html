@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>scrub inc. — AIR TREATMENT &amp; CLEANING / TOKYO, JAPAN</title>
-<meta name="description" content="エアコンクリーニングとワークウェア。道具としての清掃、道具としての服。scrub inc. — TOKYO, JAPAN">
+<meta name="theme-color" content="#888888">
+<title>scrub inc. — AIR TREATMENT &amp; CLEANING</title>
+<meta name="description" content="scrub inc. はエアコンクリーニングと、現場から生まれたワークウェアを提案するプロジェクトです。TOKYO, JAPAN">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -12,19 +13,17 @@
     theme: {
       extend: {
         colors: {
-          /* オフホワイトの紙のような基調色 + インク色。彩度を抑えたユーティリティ的パレット */
-          paper:  '#F4F3EF',
-          paper2: '#EAE8E2',
-          ink:    '#1B1B1B',
-          ink2:   '#3D3D3B',
-          mute:   '#8C8A83',
-          line:   '#D8D5CE',
-          kraft:  '#B39B76',
-          accent: '#245C84',
+          /* 白・黒・グレーのみ。グレーは参照サイトのテーマカラー #888888 を基準に構成 */
+          ink:   '#000000',
+          body:  '#1A1A1A',
+          grey:  '#888888',
+          grey2: '#B3B3B3',
+          line:  '#E5E5E5',
+          fill:  '#F5F5F5',
         },
         fontFamily: {
-          sans: ['Inter', '"Noto Sans JP"', 'Helvetica Neue', 'Arial', 'sans-serif'],
-          mono: ['"Roboto Mono"', 'ui-monospace', 'monospace'],
+          /* 参照サイトと同じくシステムのサンセリフを基本に。日本語は Noto Sans JP */
+          sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', '"Noto Sans JP"', 'sans-serif'],
         },
       }
     }
@@ -33,384 +32,369 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'Inter', 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans JP', sans-serif;
     font-weight: 400;
+    color: #1A1A1A;
+    background: #FFFFFF;
     -webkit-font-smoothing: antialiased;
   }
-  /* ロゴ枠：本来の比率（600×250 = 2.4:1）を固定。差し替え時もここを合わせれば崩れません */
-  .logo-frame { aspect-ratio: 2.4 / 1; }
 
-  /* スペックシート的な小見出しラベル */
-  .label {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.22em;
+  /* 参照サイトの基調：極小サイズ・全て大文字・広い字送り */
+  .cap {
+    font-size: 11px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    line-height: 1.6;
   }
-  /* 下線のみの入力欄（ユニフォーム伝票のような佇まい） */
+  .cap-sm {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  /* セクション見出し（大きな装飾文字は使わない） */
+  .sec-title {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  /* 本文：小さめ・行間ゆったり（参照サイトの CONCEPT ページに準拠） */
+  .copy {
+    font-size: 13px;
+    line-height: 2.15;
+    font-weight: 300;
+  }
+
+  /* 下線のみの入力欄 */
   .field {
     background: transparent;
     border: 0;
-    border-bottom: 1px solid #D8D5CE;
+    border-bottom: 1px solid #E5E5E5;
     border-radius: 0;
-    padding: 10px 2px;
+    padding: 9px 2px;
     width: 100%;
-    font-size: 14px;
-    color: #1B1B1B;
+    font-size: 13px;
+    color: #1A1A1A;
     transition: border-color .2s ease;
   }
-  .field:focus { outline: none; border-bottom-color: #1B1B1B; }
-  .field::placeholder { color: #B5B2AA; }
+  .field:focus { outline: none; border-bottom-color: #000000; }
+  .field::placeholder { color: #B3B3B3; }
   select.field { appearance: none; background-image: none; }
+
+  /* 罫線下線リンク（参照サイトのテキストリンク表現） */
+  .ul-link { border-bottom: 1px solid #000; padding-bottom: 2px; }
+  .ul-link-grey { border-bottom: 1px solid #B3B3B3; padding-bottom: 2px; }
 
   .fade-in { animation: fadeIn .18s ease-out; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  /* 罫線で仕切るグリッド（影・角丸を使わない構成） */
-  .hair { border-color: #D8D5CE; }
 </style>
 </head>
 
-<body class="bg-paper text-ink">
+<body>
 
 <!-- ============================================================ -->
-<!-- HEADER -->
+<!-- HEADER — ロゴ中央配置＋その下に大文字ナビ（参照サイト準拠） -->
 <!-- ============================================================ -->
-<header class="fixed top-0 left-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b border-line">
-  <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
-    <div class="flex items-center justify-between h-16 sm:h-20">
+<header class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-line">
+  <div class="max-w-[1280px] mx-auto px-5 sm:px-8">
 
-      <!-- ロゴエリア（左） -->
-      <!--
-        ロゴ：外部ファイルに依存しないようSVGを直接埋め込み（アップロード不要／リンク切れなし）。
-        画像に差し替える場合は下の <svg>…</svg> を削除し、
-        <img src="images/logo.png" alt="scrub inc." class="h-full w-auto object-contain"> に置換のうえ
-        images フォルダもリポジトリへアップロードしてください。
-      -->
-      <a href="#top" class="logo-frame h-8 sm:h-10 flex items-center flex-shrink-0" aria-label="scrub inc. ホーム">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" class="h-full w-auto" role="img" aria-label="scrub inc.">
-          <text x="50%" y="120" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="600" fill="#1B1B1B" text-anchor="middle" letter-spacing="-2">scrub inc.</text>
-          <text x="50%" y="164" font-family="'Roboto Mono', monospace" font-size="13" font-weight="400" fill="#8C8A83" letter-spacing="3.5" text-anchor="middle">AIR TREATMENT &amp; CLEANING</text>
-          <text x="50%" y="188" font-family="'Roboto Mono', monospace" font-size="11" font-weight="300" fill="#8C8A83" letter-spacing="1.5" text-anchor="middle">scrb.cleaning | @scrub.inc | TOKYO, JAPAN</text>
+    <!-- ロゴ（中央） -->
+    <!--
+      ロゴは変更していません。外部ファイルに依存しないようSVGを直接埋め込んでいます。
+      viewBox="100 54 400 76" でワードマーク「scrub inc.」のみを切り出し、見出しと同等サイズで表示。
+      画像に差し替える場合は下の <svg>…</svg> を削除し、
+      <img src="images/logo.png" alt="scrub inc." class="h-full w-auto object-contain"> に置換のうえ
+      images フォルダもリポジトリへアップロードしてください。
+    -->
+    <div class="flex justify-center pt-4 sm:pt-6">
+      <a href="#top" class="h-[26px] sm:h-[40px] flex items-center" aria-label="scrub inc. ホーム">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="100 54 400 76" class="h-full w-auto" role="img" aria-label="scrub inc.">
+          <text x="300" y="120" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="600" fill="#245C84" text-anchor="middle" letter-spacing="-2">scrub inc.</text>
         </svg>
       </a>
-
-      <!-- ナビ（右） -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="#booking"
-           class="label border border-ink bg-ink text-paper px-4 sm:px-6 py-2.5 hover:bg-ink2 transition-colors whitespace-nowrap">
-          Booking
-        </a>
-        <button type="button" onclick="openShopModal()"
-           class="label border border-line text-ink2 px-4 sm:px-6 py-2.5 hover:border-ink hover:text-ink transition-colors whitespace-nowrap">
-          Shop
-        </button>
-      </div>
-
     </div>
+
+    <!-- ナビ（中央） -->
+    <nav class="flex justify-center gap-6 sm:gap-9 pt-3 pb-4 sm:pt-4 sm:pb-5">
+      <a href="#service" class="cap text-grey hover:text-ink transition-colors">Service</a>
+      <a href="#booking" class="cap text-grey hover:text-ink transition-colors">Booking</a>
+      <a href="#apparel" class="cap text-grey hover:text-ink transition-colors">Apparel</a>
+      <button type="button" onclick="openShopModal()" class="cap text-grey hover:text-ink transition-colors">Shop</button>
+    </nav>
+
   </div>
 </header>
 
-<div id="top" class="h-16 sm:h-20"></div>
+<div id="top" class="h-[104px] sm:h-[132px]"></div>
 
 <!-- ============================================================ -->
-<!-- HERO -->
+<!-- HERO — 中央揃え・余白主導 -->
 <!-- ============================================================ -->
-<section class="border-b border-line">
-  <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
+<section class="px-5 sm:px-8 pt-16 pb-20 sm:pt-28 sm:pb-32 text-center">
+  <p class="cap-sm text-grey mb-8 sm:mb-12">Air Treatment &amp; Cleaning — Tokyo, Japan</p>
 
-    <div class="pt-14 sm:pt-24 pb-10 sm:pb-16 max-w-4xl">
-      <p class="label text-mute mb-6 sm:mb-8">Est. 2026 — Tokyo, Japan / No. 001</p>
+  <h1 class="text-[26px] leading-[1.55] sm:text-[40px] sm:leading-[1.45] font-light tracking-tight mb-10 sm:mb-14 text-ink">
+    プロのエアコン清掃と、<br>
+    洗練されたワークウェア。
+  </h1>
 
-      <h1 class="text-[28px] leading-[1.35] sm:text-[46px] sm:leading-[1.25] font-light tracking-tight mb-8 sm:mb-10">
-        プロのエアコン清掃と、<br>
-        洗練されたワークウェア。
-      </h1>
+  <p class="copy text-body max-w-2xl mx-auto">
+    道具としての清掃、道具としての服。<br>
+    現場で磨かれた技術と、現場から生まれた実用のプロダクトを、<br>
+    東京から日常へ届けます。
+  </p>
+</section>
 
-      <p class="text-sm sm:text-base leading-loose text-ink2 font-light max-w-xl">
-        道具としての清掃、道具としての服。<br>
-        現場で磨かれた技術と、現場から生まれた実用のプロダクトを、<br class="hidden sm:block">
-        東京から日常へ届けます。
-      </p>
-    </div>
+<!-- ============================================================ -->
+<!-- 2つの導線（罫線を使わず余白で区切る） -->
+<!-- ============================================================ -->
+<section class="px-5 sm:px-8 pb-20 sm:pb-32">
+  <div class="max-w-4xl mx-auto grid sm:grid-cols-2 gap-14 sm:gap-20 text-center">
 
-    <!-- ナビゲーションカード：罫線で区切る2分割グリッド -->
-    <div class="grid sm:grid-cols-2 border-t border-line">
+    <!-- A -->
+    <a href="#booking" class="group block">
+      <p class="cap-sm text-grey2 mb-5">01</p>
+      <p class="cap text-ink mb-4">Air Conditioner Cleaning</p>
+      <p class="copy text-grey mb-7">エアコンクリーニングを予約する</p>
+      <span class="cap-sm text-ink ul-link inline-block group-hover:text-grey group-hover:border-grey transition-colors">
+        Book Now
+      </span>
+    </a>
 
-      <!-- カードA -->
-      <a href="#booking"
-         class="group block border-b sm:border-b-0 sm:border-r border-line py-8 sm:py-12 sm:pr-10 hover:bg-paper2/60 transition-colors">
-        <div class="flex items-start justify-between gap-6">
-          <div>
-            <p class="label text-mute mb-4">01 / Service</p>
-            <h2 class="text-lg sm:text-2xl font-light tracking-tight mb-3">エアコンクリーニングを予約</h2>
-            <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">分解洗浄・明朗会計・作業保証つき。</p>
-          </div>
-          <span class="label text-ink border-b border-ink pb-1 whitespace-nowrap group-hover:translate-x-1 transition-transform">
-            Book →
-          </span>
-        </div>
-      </a>
+    <!-- B -->
+    <button type="button" onclick="openShopModal()" class="group block w-full">
+      <p class="cap-sm text-grey2 mb-5">02</p>
+      <p class="cap text-ink mb-4">Apparel Web Store</p>
+      <p class="copy text-grey mb-7">アパレルショップを見る</p>
+      <span class="cap-sm text-grey ul-link-grey inline-block group-hover:text-ink group-hover:border-ink transition-colors">
+        Coming Soon
+      </span>
+    </button>
 
-      <!-- カードB -->
-      <button type="button" onclick="openShopModal()"
-         class="group block w-full text-left py-8 sm:py-12 sm:pl-10 hover:bg-paper2/60 transition-colors">
-        <div class="flex items-start justify-between gap-6">
-          <div>
-            <p class="label text-mute mb-4">02 / Apparel</p>
-            <h2 class="text-lg sm:text-2xl font-light tracking-tight mb-3">アパレルショップを見る</h2>
-            <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">実用から設計するワークウェア。</p>
-          </div>
-          <span class="label text-mute border-b border-line pb-1 whitespace-nowrap group-hover:text-ink group-hover:border-ink transition-colors">
-            Coming Soon
-          </span>
-        </div>
-      </button>
-
-    </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SERVICE / エアコンクリーニング -->
+<!-- SERVICE -->
 <!-- ============================================================ -->
-<section id="aircon" class="border-b border-line">
-  <div class="max-w-[1400px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
+<section id="service" class="px-5 sm:px-8 py-20 sm:py-28 border-t border-line scroll-mt-[132px]">
+  <div class="max-w-[1280px] mx-auto">
 
-    <!-- セクション見出し -->
-    <div class="grid sm:grid-cols-12 gap-6 sm:gap-10 mb-14 sm:mb-20">
-      <div class="sm:col-span-4">
-        <p class="label text-mute mb-4">01 / Service</p>
-        <h2 class="text-2xl sm:text-3xl font-light tracking-tight">エアコンクリーニング</h2>
-      </div>
-      <div class="sm:col-span-6 sm:col-start-6">
-        <p class="text-sm leading-loose text-ink2 font-light">
-          見えない内部に蓄積したカビやホコリを、分解洗浄で根本から取り除きます。
-          専門研修を受けたスタッフが、住宅・オフィスいずれの環境にも対応します。
-        </p>
-      </div>
-    </div>
+    <p class="sec-title text-ink text-center mb-10 sm:mb-14">Service</p>
 
-    <!-- 特徴3選：罫線区切り -->
-    <div class="grid sm:grid-cols-3 border-t border-line mb-20 sm:mb-28">
-      <div class="border-b sm:border-b-0 sm:border-r border-line py-8 sm:py-10 sm:pr-8">
-        <p class="label text-mute mb-5">01</p>
-        <h3 class="text-base font-medium mb-3">プロの技術</h3>
-        <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">
+    <p class="copy text-body text-center max-w-2xl mx-auto mb-20 sm:mb-28">
+      見えない内部に蓄積したカビやホコリを、分解洗浄で根本から取り除きます。<br>
+      専門研修を受けたスタッフが、住宅・オフィスいずれの環境にも対応します。
+    </p>
+
+    <!-- 特徴3点：罫線なし・余白のみ -->
+    <div class="max-w-4xl mx-auto grid sm:grid-cols-3 gap-14 sm:gap-14 text-center mb-24 sm:mb-32">
+      <div>
+        <p class="cap-sm text-grey2 mb-5">01</p>
+        <p class="cap text-ink mb-5">Professional Skill</p>
+        <p class="copy text-grey">
           専門研修を修了したスタッフが分解洗浄を実施。表面清掃では届かない熱交換器・送風ファンまで洗浄します。
         </p>
       </div>
-      <div class="border-b sm:border-b-0 sm:border-r border-line py-8 sm:py-10 sm:px-8">
-        <p class="label text-mute mb-5">02</p>
-        <h3 class="text-base font-medium mb-3">明朗会計</h3>
-        <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">
+      <div>
+        <p class="cap-sm text-grey2 mb-5">02</p>
+        <p class="cap text-ink mb-5">Clear Pricing</p>
+        <p class="copy text-grey">
           追加料金は発生しません。作業前に必ず書面でお見積りを提示し、ご了承いただいてから着手します。
         </p>
       </div>
-      <div class="py-8 sm:py-10 sm:pl-8">
-        <p class="label text-mute mb-5">03</p>
-        <h3 class="text-base font-medium mb-3">作業保証</h3>
-        <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">
+      <div>
+        <p class="cap-sm text-grey2 mb-5">03</p>
+        <p class="cap text-ink mb-5">Work Guarantee</p>
+        <p class="copy text-grey">
           損害保険に加入済み。作業後に万一の不具合が生じた場合も当社にて責任を持って対応します。
         </p>
       </div>
     </div>
 
-    <!-- 料金表：スペックシート -->
-    <div class="mb-20 sm:mb-28">
-      <div class="flex items-baseline justify-between border-b border-ink pb-4 mb-2">
-        <p class="label">Price List</p>
-        <p class="label text-mute">Tax Incl.</p>
+    <!-- 料金表：商品リストと同じ体裁（極薄の区切りのみ） -->
+    <div class="max-w-3xl mx-auto">
+      <p class="sec-title text-ink text-center mb-10 sm:mb-14">Price List</p>
+
+      <div class="divide-y divide-line border-t border-line">
+        <div class="flex items-baseline justify-between gap-4 py-5">
+          <div>
+            <p class="cap text-ink mb-1.5">Wall Mounted / Standard</p>
+            <p class="cap-sm text-grey2">SC-01 &nbsp;·&nbsp; 壁掛けタイプ &nbsp;·&nbsp; 約60分</p>
+          </div>
+          <p class="cap text-ink whitespace-nowrap">¥12,000</p>
+        </div>
+
+        <div class="flex items-baseline justify-between gap-4 py-5">
+          <div>
+            <p class="cap text-ink mb-1.5">Wall Mounted / Self-Cleaning</p>
+            <p class="cap-sm text-grey2">SC-02 &nbsp;·&nbsp; お掃除機能付き &nbsp;·&nbsp; 約120分</p>
+          </div>
+          <p class="cap text-ink whitespace-nowrap">¥22,000</p>
+        </div>
+
+        <div class="flex items-baseline justify-between gap-4 py-5">
+          <div>
+            <p class="cap text-ink mb-1.5">Outdoor Unit</p>
+            <p class="cap-sm text-grey2">SC-03 &nbsp;·&nbsp; 室外機クリーニング &nbsp;·&nbsp; 約40分</p>
+          </div>
+          <p class="cap text-ink whitespace-nowrap">¥6,000</p>
+        </div>
+
+        <div class="flex items-baseline justify-between gap-4 py-5">
+          <div>
+            <p class="cap text-ink mb-1.5">Commercial Unit</p>
+            <p class="cap-sm text-grey2">SC-04 &nbsp;·&nbsp; 業務用エアコン &nbsp;·&nbsp; 要調査</p>
+          </div>
+          <p class="cap text-grey whitespace-nowrap">On Request</p>
+        </div>
       </div>
 
-      <div class="divide-y divide-line">
-        <div class="grid grid-cols-12 gap-3 py-5 items-baseline">
-          <p class="col-span-12 sm:col-span-5 text-sm font-medium">壁掛けタイプ（標準）</p>
-          <p class="col-span-6 sm:col-span-4 font-mono text-[11px] text-mute">FS-01 / 約60分</p>
-          <p class="col-span-6 sm:col-span-3 font-mono text-sm text-right">¥12,000 —</p>
-        </div>
-        <div class="grid grid-cols-12 gap-3 py-5 items-baseline">
-          <p class="col-span-12 sm:col-span-5 text-sm font-medium">お掃除機能付きタイプ</p>
-          <p class="col-span-6 sm:col-span-4 font-mono text-[11px] text-mute">FS-02 / 約120分</p>
-          <p class="col-span-6 sm:col-span-3 font-mono text-sm text-right">¥22,000 —</p>
-        </div>
-        <div class="grid grid-cols-12 gap-3 py-5 items-baseline">
-          <p class="col-span-12 sm:col-span-5 text-sm font-medium">室外機クリーニング</p>
-          <p class="col-span-6 sm:col-span-4 font-mono text-[11px] text-mute">FS-03 / 約40分</p>
-          <p class="col-span-6 sm:col-span-3 font-mono text-sm text-right">¥6,000 —</p>
-        </div>
-        <div class="grid grid-cols-12 gap-3 py-5 items-baseline">
-          <p class="col-span-12 sm:col-span-5 text-sm font-medium">業務用エアコン</p>
-          <p class="col-span-6 sm:col-span-4 font-mono text-[11px] text-mute">FS-04 / 要調査</p>
-          <p class="col-span-6 sm:col-span-3 font-mono text-sm text-right">On Request</p>
-        </div>
-      </div>
-
-      <p class="font-mono text-[10px] text-mute mt-5 leading-relaxed">
-        ※ 表示は1台あたりの目安価格です。台数・機種・設置状況により変動します。
+      <p class="cap-sm text-grey2 mt-8 text-center leading-relaxed">
+        ※ 表示は1台あたりの目安価格です（税込）。台数・機種・設置状況により変動します。
       </p>
     </div>
 
-    <!-- 予約フォーム -->
-    <div id="booking" class="scroll-mt-24 border-t border-ink pt-10 sm:pt-14">
-      <div class="grid sm:grid-cols-12 gap-8 sm:gap-10">
+  </div>
+</section>
 
-        <div class="sm:col-span-4">
-          <p class="label text-mute mb-4">Booking Form</p>
-          <h3 class="text-xl sm:text-2xl font-light tracking-tight mb-4">クリーニングを予約する</h3>
-          <p class="text-xs sm:text-sm text-mute font-light leading-relaxed">
-            必要事項をご記入のうえ送信してください。担当より折り返しご連絡し、日程を確定します。
-          </p>
-        </div>
+<!-- ============================================================ -->
+<!-- BOOKING -->
+<!-- ============================================================ -->
+<section id="booking" class="px-5 sm:px-8 py-20 sm:py-28 border-t border-line scroll-mt-[132px]">
+  <div class="max-w-2xl mx-auto">
 
-        <div class="sm:col-span-8">
-          <form onsubmit="return handleBookingSubmit(event)" class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+    <p class="sec-title text-ink text-center mb-10 sm:mb-14">Booking</p>
 
-            <div>
-              <label class="label text-mute block mb-1">Name *</label>
-              <input required type="text" class="field" placeholder="山田 太郎">
-            </div>
+    <p class="copy text-body text-center mb-16 sm:mb-20">
+      必要事項をご記入のうえ送信してください。<br>
+      担当より折り返しご連絡し、日程を確定します。
+    </p>
 
-            <div>
-              <label class="label text-mute block mb-1">Contact *</label>
-              <input required type="text" class="field" placeholder="090-0000-0000 / mail@example.com">
-            </div>
+    <form onsubmit="return handleBookingSubmit(event)" class="grid sm:grid-cols-2 gap-x-10 gap-y-9">
 
-            <div>
-              <label class="label text-mute block mb-1">Type</label>
-              <select class="field">
-                <option>壁掛けタイプ（標準）</option>
-                <option>お掃除機能付きタイプ</option>
-                <option>室外機クリーニングのみ</option>
-                <option>業務用エアコン</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="label text-mute block mb-1">Units</label>
-              <input type="number" min="1" value="1" class="field">
-            </div>
-
-            <div>
-              <label class="label text-mute block mb-1">Preferred Date</label>
-              <input type="date" class="field">
-            </div>
-
-            <div>
-              <label class="label text-mute block mb-1">Preferred Time</label>
-              <select class="field">
-                <option>午前（9:00 – 12:00）</option>
-                <option>午後 1（12:00 – 15:00）</option>
-                <option>午後 2（15:00 – 18:00）</option>
-                <option>夕方（18:00 – 20:00）</option>
-              </select>
-            </div>
-
-            <div class="sm:col-span-2">
-              <label class="label text-mute block mb-1">Notes</label>
-              <textarea rows="2" class="field resize-none" placeholder="例：カビの臭いが気になる / フィルターが破損している"></textarea>
-            </div>
-
-            <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4 pt-3">
-              <button type="submit"
-                class="label bg-ink text-paper border border-ink px-10 py-4 hover:bg-ink2 transition-colors">
-                Submit Request
-              </button>
-              <p class="font-mono text-[10px] text-mute leading-relaxed">
-                ※ 本フォームはデモです。送信内容は保存されません。
-              </p>
-            </div>
-
-          </form>
-        </div>
+      <div>
+        <label class="cap-sm text-grey block mb-1">Name *</label>
+        <input required type="text" class="field" placeholder="山田 太郎">
       </div>
-    </div>
 
+      <div>
+        <label class="cap-sm text-grey block mb-1">Contact *</label>
+        <input required type="text" class="field" placeholder="090-0000-0000 / mail@example.com">
+      </div>
+
+      <div>
+        <label class="cap-sm text-grey block mb-1">Type</label>
+        <select class="field">
+          <option>壁掛けタイプ（標準）</option>
+          <option>お掃除機能付きタイプ</option>
+          <option>室外機クリーニングのみ</option>
+          <option>業務用エアコン</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="cap-sm text-grey block mb-1">Units</label>
+        <input type="number" min="1" value="1" class="field">
+      </div>
+
+      <div>
+        <label class="cap-sm text-grey block mb-1">Preferred Date</label>
+        <input type="date" class="field">
+      </div>
+
+      <div>
+        <label class="cap-sm text-grey block mb-1">Preferred Time</label>
+        <select class="field">
+          <option>午前（9:00 – 12:00）</option>
+          <option>午後 1（12:00 – 15:00）</option>
+          <option>午後 2（15:00 – 18:00）</option>
+          <option>夕方（18:00 – 20:00）</option>
+        </select>
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="cap-sm text-grey block mb-1">Notes</label>
+        <textarea rows="2" class="field resize-none" placeholder="例：カビの臭いが気になる / フィルターが破損している"></textarea>
+      </div>
+
+      <div class="sm:col-span-2 text-center pt-6">
+        <button type="submit" class="cap bg-ink text-white px-16 py-4 hover:bg-body transition-colors">
+          Submit
+        </button>
+        <p class="cap-sm text-grey2 mt-6">※ 本フォームはデモです。送信内容は保存されません。</p>
+      </div>
+
+    </form>
   </div>
 </section>
 
 <!-- ============================================================ -->
 <!-- APPAREL -->
 <!-- ============================================================ -->
-<section id="apparel" class="bg-paper2 border-b border-line">
-  <div class="max-w-[1400px] mx-auto px-5 sm:px-8 py-16 sm:py-24">
+<section id="apparel" class="px-5 sm:px-8 py-20 sm:py-28 border-t border-line scroll-mt-[132px]">
+  <div class="max-w-[1280px] mx-auto">
 
-    <div class="grid sm:grid-cols-12 gap-6 sm:gap-10 mb-14 sm:mb-20">
-      <div class="sm:col-span-4">
-        <p class="label text-mute mb-4">02 / Apparel</p>
-        <h2 class="text-2xl sm:text-3xl font-light tracking-tight">
-          道具としての、<br>ワークウェア。
-        </h2>
-      </div>
-      <div class="sm:col-span-6 sm:col-start-6">
-        <p class="text-sm leading-loose text-ink2 font-light mb-6">
-          清掃という現場から出発したアパレルライン。動きやすさ、耐久性、乾きの速さ——
-          道具に求められる性能を満たしたうえで、日常でも着られる佇まいに整えています。
-        </p>
-        <p class="text-sm leading-loose text-ink2 font-light">
-          流行を追わず、必要なものだけを、必要なだけ。
-          「もっとこうだったらいい」という現場の実感を、そのまま製品に落とし込みます。
-        </p>
-      </div>
-    </div>
+    <p class="sec-title text-ink text-center mb-10 sm:mb-14">Apparel</p>
 
-    <!-- アイテム枠：スペックシート的キャプション -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 border-t border-l border-line mb-14 sm:mb-16">
+    <!-- 参照サイトの CONCEPT ページと同じ、中央揃え＋改行を重ねた文章表現 -->
+    <p class="copy text-body text-center max-w-2xl mx-auto mb-20 sm:mb-28">
+      清掃という現場から出発したアパレルライン。<br>
+      動きやすさ、耐久性、乾きの速さ——道具に求められる性能を満たしたうえで、<br>
+      日常でも着られる佇まいに整えています。<br>
+      <br>
+      流行を追わず、必要なものだけを、必要なだけ。<br>
+      「もっとこうだったらいい」という現場の実感を、そのまま製品に落とし込みます。
+    </p>
 
-      <div class="border-r border-b border-line">
-        <div class="aspect-[4/5] flex items-center justify-center">
-          <span class="font-mono text-[10px] text-mute tracking-widest">IMAGE</span>
+    <!-- 商品グリッド：枠線なし・淡いグレーの画像面＋大文字の品名と価格 -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-12 sm:gap-x-8 mb-20 sm:mb-28">
+
+      <div class="text-center">
+        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey2">Image</span>
         </div>
-        <div class="border-t border-line px-3 py-3">
-          <p class="font-mono text-[10px] text-mute mb-1">SC-TS01</p>
-          <p class="text-xs font-medium">Heavy OZ T-Shirt</p>
-        </div>
+        <p class="cap text-ink mb-1.5">Corporate S/S Tee</p>
+        <p class="cap-sm text-grey2">SC-TS01</p>
       </div>
 
-      <div class="border-r border-b border-line">
-        <div class="aspect-[4/5] flex items-center justify-center">
-          <span class="font-mono text-[10px] text-mute tracking-widest">IMAGE</span>
+      <div class="text-center">
+        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey2">Image</span>
         </div>
-        <div class="border-t border-line px-3 py-3">
-          <p class="font-mono text-[10px] text-mute mb-1">SC-CP01</p>
-          <p class="text-xs font-medium">Corporate Cap</p>
-        </div>
+        <p class="cap text-ink mb-1.5">Corporate Cap</p>
+        <p class="cap-sm text-grey2">SC-CP01</p>
       </div>
 
-      <div class="border-r border-b border-line">
-        <div class="aspect-[4/5] flex items-center justify-center">
-          <span class="font-mono text-[10px] text-mute tracking-widest">IMAGE</span>
+      <div class="text-center">
+        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey2">Image</span>
         </div>
-        <div class="border-t border-line px-3 py-3">
-          <p class="font-mono text-[10px] text-mute mb-1">SC-JK01</p>
-          <p class="text-xs font-medium">Utility Work Jacket</p>
-        </div>
+        <p class="cap text-ink mb-1.5">Utility Work Jacket</p>
+        <p class="cap-sm text-grey2">SC-JK01</p>
       </div>
 
-      <div class="border-r border-b border-line">
-        <div class="aspect-[4/5] flex items-center justify-center">
-          <span class="font-mono text-[10px] text-mute tracking-widest">IMAGE</span>
+      <div class="text-center">
+        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey2">Image</span>
         </div>
-        <div class="border-t border-line px-3 py-3">
-          <p class="font-mono text-[10px] text-mute mb-1">SC-BG01</p>
-          <p class="text-xs font-medium">Service Tote Bag</p>
-        </div>
+        <p class="cap text-ink mb-1.5">Service Tote Bag</p>
+        <p class="cap-sm text-grey2">SC-BG01</p>
       </div>
 
     </div>
 
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-      <button type="button" onclick="openShopModal()"
-        class="label bg-ink text-paper border border-ink px-10 py-4 hover:bg-ink2 transition-colors">
-        Enter Shop — Coming Soon
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-8">
+      <button type="button" onclick="openShopModal()" class="cap bg-ink text-white px-16 py-4 hover:bg-body transition-colors w-full sm:w-auto">
+        Enter Web Store
       </button>
-      <button type="button" onclick="openShopModal()"
-        class="label border border-line text-ink2 px-10 py-4 hover:border-ink hover:text-ink transition-colors">
+      <button type="button" onclick="openShopModal()" class="cap-sm text-grey ul-link-grey hover:text-ink hover:border-ink transition-colors">
         Notify Me on Launch
       </button>
     </div>
@@ -419,69 +403,99 @@
 </section>
 
 <!-- ============================================================ -->
-<!-- FOOTER -->
+<!-- FOOTER — 参照サイトのフッター構成に準拠 -->
 <!-- ============================================================ -->
-<footer class="max-w-[1400px] mx-auto px-5 sm:px-8 py-12 sm:py-16">
-  <div class="grid sm:grid-cols-12 gap-8 border-b border-line pb-10 mb-8">
+<footer class="px-5 sm:px-8 pt-20 sm:pt-28 pb-14 border-t border-line">
+  <div class="max-w-[1280px] mx-auto">
 
-    <div class="sm:col-span-5">
-      <div class="logo-frame h-8 mb-5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" class="h-full w-auto" role="img" aria-label="scrub inc.">
-          <text x="0" y="120" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="600" fill="#1B1B1B" letter-spacing="-2">scrub inc.</text>
+    <!-- ユーティリティリンク -->
+    <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-20 sm:mb-24">
+      <a href="#booking" class="cap-sm text-grey hover:text-ink transition-colors">Contact</a>
+      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Store Guide</button>
+      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Privacy Policy</button>
+      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Legals</button>
+    </nav>
+
+    <div class="grid sm:grid-cols-3 gap-14 sm:gap-10 mb-20 sm:mb-24">
+
+      <!-- 店舗情報 -->
+      <!-- ▼ 実際の住所・電話番号に差し替えてください（現在はプレースホルダーです） -->
+      <div>
+        <p class="cap text-ink mb-6">scrub inc. Headquarters</p>
+        <p class="cap-sm text-grey">
+          1F SAMPLE BLDG.<br>
+          0-0-0 SHIBUYA-KU TOKYO<br>
+          150-0000 JAPAN<br>
+          <br>
+          OPENING HOURS: 10:00 – 19:00<br>
+          CLOSED: SUNDAY<br>
+          TEL. 03-0000-0000
+        </p>
+      </div>
+
+      <!-- SNS -->
+      <div>
+        <p class="cap text-ink mb-6">Instagram</p>
+        <p class="cap-sm text-grey">
+          @scrub.inc<br>
+          <br>
+          scrb.cleaning
+        </p>
+      </div>
+
+      <!-- ニュースレター -->
+      <div>
+        <p class="cap text-ink mb-6">Join Our Newsletter</p>
+        <p class="cap-sm text-grey mb-6">Be the first to know</p>
+        <form onsubmit="return handleNewsletter(event)" class="flex items-end gap-4">
+          <input required type="email" class="field flex-1" placeholder="mail@example.com" aria-label="メールアドレス">
+          <button type="submit" class="cap-sm text-ink ul-link whitespace-nowrap hover:text-grey hover:border-grey transition-colors pb-2">
+            Join
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- ロゴ（フル版）＋コピーライト -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-8 pt-12 border-t border-line">
+      <div class="h-12">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" class="h-full w-auto" role="img" aria-label="scrub inc. — AIR TREATMENT &amp; CLEANING, TOKYO JAPAN">
+          <text x="300" y="120" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="600" fill="#245C84" text-anchor="middle" letter-spacing="-2">scrub inc.</text>
+          <text x="300" y="164" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="400" fill="#888888" letter-spacing="3.5" text-anchor="middle">AIR TREATMENT &amp; CLEANING</text>
+          <text x="300" y="188" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="300" fill="#888888" letter-spacing="1.5" text-anchor="middle">scrb.cleaning | @scrub.inc | TOKYO, JAPAN</text>
         </svg>
       </div>
-      <p class="font-mono text-[10px] text-mute leading-loose tracking-wider">
-        AIR TREATMENT &amp; CLEANING<br>
-        TOKYO, JAPAN
-      </p>
-    </div>
-
-    <div class="sm:col-span-3">
-      <p class="label text-mute mb-4">Index</p>
-      <ul class="space-y-2.5 text-xs font-light">
-        <li><a href="#aircon" class="hover:text-mute transition-colors">01 / Service</a></li>
-        <li><a href="#booking" class="hover:text-mute transition-colors">Booking</a></li>
-        <li><a href="#apparel" class="hover:text-mute transition-colors">02 / Apparel</a></li>
-        <li><button type="button" onclick="openShopModal()" class="hover:text-mute transition-colors">Shop</button></li>
-      </ul>
-    </div>
-
-    <div class="sm:col-span-3">
-      <p class="label text-mute mb-4">Contact</p>
-      <ul class="space-y-2.5 font-mono text-[11px] text-ink2">
-        <li>scrb.cleaning</li>
-        <li>@scrub.inc</li>
-      </ul>
+      <p class="cap-sm text-grey2">© scrub inc.</p>
     </div>
 
   </div>
-
-  <p class="font-mono text-[10px] text-mute tracking-wider">© 2026 scrub inc. All rights reserved.</p>
 </footer>
 
 <!-- ============================================================ -->
 <!-- MODAL -->
 <!-- ============================================================ -->
 <div id="shop-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-5">
-  <div class="absolute inset-0 bg-ink/50" onclick="closeShopModal()"></div>
+  <div class="absolute inset-0 bg-ink/40" onclick="closeShopModal()"></div>
 
-  <div class="fade-in relative bg-paper border border-ink max-w-md w-full">
-    <div class="border-b border-line px-6 py-3 flex items-center justify-between">
-      <p class="label text-mute">Notice — No. 001</p>
-      <button type="button" onclick="closeShopModal()" class="label text-mute hover:text-ink transition-colors">Close</button>
+  <div class="fade-in relative bg-white border border-line max-w-sm w-full">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-line">
+      <p class="cap-sm text-grey">Notice</p>
+      <button type="button" onclick="closeShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Close</button>
     </div>
 
-    <div class="px-6 py-10">
-      <h3 class="text-lg sm:text-xl font-light tracking-tight leading-relaxed mb-4">
-        公式オンラインショップは<br>近日オープンいたします。
-      </h3>
-      <p class="text-xs sm:text-sm text-mute font-light leading-loose mb-8">
-        現在、第一弾アイテムの生産を進めています。
-        オープンの詳細は本サイトおよび公式アカウントにてご案内します。
+    <div class="px-8 py-12 text-center">
+      <p class="cap text-ink mb-8">Web Store — Coming Soon</p>
+      <p class="copy text-grey mb-10">
+        公式オンラインショップは<br>
+        近日オープンいたします。<br>
+        <br>
+        現在、第一弾アイテムの生産を進めています。<br>
+        詳細は本サイトおよび公式アカウントにて<br>
+        ご案内します。
       </p>
-      <button type="button" onclick="closeShopModal()"
-        class="label bg-ink text-paper border border-ink w-full py-4 hover:bg-ink2 transition-colors">
-        Understood
+      <button type="button" onclick="closeShopModal()" class="cap bg-ink text-white w-full py-4 hover:bg-body transition-colors">
+        Close
       </button>
     </div>
   </div>
@@ -503,6 +517,12 @@
   function handleBookingSubmit(e) {
     e.preventDefault();
     alert('ご予約リクエストを受け付けました（デモ）。担当より折り返しご連絡いたします。');
+    e.target.reset();
+    return false;
+  }
+  function handleNewsletter(e) {
+    e.preventDefault();
+    alert('ご登録ありがとうございます（デモ）。オープン時にご案内いたします。');
     e.target.reset();
     return false;
   }
