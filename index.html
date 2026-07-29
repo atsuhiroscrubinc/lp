@@ -65,18 +65,27 @@
     line-height: 1.6;
     font-weight: 500;
   }
-  /* セクション見出し（大きな装飾文字は使わない） */
+  /* セクション見出し：ページ内で最も強い階層。黒・やや大きめ */
   .sec-title {
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     line-height: 1.6;
+    font-weight: 500;
+    color: #000000;
   }
-  /* 本文：小さめ・行間ゆったり（参照サイトの CONCEPT ページに準拠） */
+  /* 本文：読ませる文章。濃度と行間を確保 */
   .copy {
-    font-size: 13px;
-    line-height: 2.15;
-    font-weight: 300;
+    font-size: 14px;
+    line-height: 2.05;
+    font-weight: 400;
+    color: #1A1A1A;
+  }
+  /* 補助テキスト：注記・型番など。意図的に一段落とす */
+  .copy-sub {
+    font-size: 12px;
+    line-height: 1.9;
+    color: #888888;
   }
 
   /* 下線のみの入力欄 */
@@ -87,12 +96,12 @@
     border-radius: 0;
     padding: 9px 2px;
     width: 100%;
-    font-size: 13px;
+    font-size: 14px;
     color: #1A1A1A;
     transition: border-color .2s ease;
   }
   .field:focus { outline: none; border-bottom-color: #000000; }
-  .field::placeholder { color: #B3B3B3; }
+  .field::placeholder { color: #A6A6A6; }
   select.field { appearance: none; background-image: none; }
 
   /* 罫線下線リンク（参照サイトのテキストリンク表現） */
@@ -189,26 +198,26 @@
       専門研修を受けたスタッフが、住宅・オフィスいずれの環境にも対応します。
     </p>
 
-    <!-- 特徴3点：罫線なし・余白のみ -->
-    <div class="max-w-4xl mx-auto grid sm:grid-cols-3 gap-14 sm:gap-14 text-center mb-24 sm:mb-32">
-      <div>
-        <p class="cap-sm text-grey2 mb-5">01</p>
-        <p class="cap text-ink mb-5">Professional Skill</p>
-        <p class="copy text-grey">
+    <!-- 特徴3点：1つの枠を細罫で3分割し、領域を明示 -->
+    <div class="max-w-4xl mx-auto border border-line grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line text-center mb-24 sm:mb-32">
+      <div class="px-7 py-12">
+        <p class="cap-sm text-grey mb-6">01</p>
+        <p class="cap-lg text-ink mb-5">Professional Skill</p>
+        <p class="copy">
           専門研修を修了したスタッフが分解洗浄を実施。表面清掃では届かない熱交換器・送風ファンまで洗浄します。
         </p>
       </div>
-      <div>
-        <p class="cap-sm text-grey2 mb-5">02</p>
-        <p class="cap text-ink mb-5">Clear Pricing</p>
-        <p class="copy text-grey">
+      <div class="px-7 py-12">
+        <p class="cap-sm text-grey mb-6">02</p>
+        <p class="cap-lg text-ink mb-5">Clear Pricing</p>
+        <p class="copy">
           追加料金は発生しません。作業前に必ず書面でお見積りを提示し、ご了承いただいてから着手します。
         </p>
       </div>
-      <div>
-        <p class="cap-sm text-grey2 mb-5">03</p>
-        <p class="cap text-ink mb-5">Work Guarantee</p>
-        <p class="copy text-grey">
+      <div class="px-7 py-12">
+        <p class="cap-sm text-grey mb-6">03</p>
+        <p class="cap-lg text-ink mb-5">Work Guarantee</p>
+        <p class="copy">
           損害保険に加入済み。作業後に万一の不具合が生じた場合も当社にて責任を持って対応します。
         </p>
       </div>
@@ -218,41 +227,44 @@
     <div class="max-w-3xl mx-auto">
       <p class="sec-title text-ink text-center mb-10 sm:mb-14">Price List</p>
 
-      <div class="divide-y divide-line border-t border-line">
-        <div class="flex items-baseline justify-between gap-4 py-5">
+      <!-- 枠で囲い、品名と価格を強く／型番と所要時間を弱く -->
+      <div class="border border-line divide-y divide-line">
+
+        <div class="flex items-center justify-between gap-5 px-6 sm:px-8 py-6 text-left">
           <div>
-            <p class="cap text-ink mb-1.5">Wall Mounted / Standard</p>
-            <p class="cap-sm text-grey2">SC-01 &nbsp;·&nbsp; 壁掛けタイプ &nbsp;·&nbsp; 約60分</p>
+            <p class="cap-lg text-ink mb-2">Wall Mounted / Standard</p>
+            <p class="copy-sub">SC-01 &nbsp;·&nbsp; 壁掛けタイプ &nbsp;·&nbsp; 約60分</p>
           </div>
-          <p class="cap text-ink whitespace-nowrap">¥12,000</p>
+          <p class="text-[17px] font-medium text-ink whitespace-nowrap">¥12,000</p>
         </div>
 
-        <div class="flex items-baseline justify-between gap-4 py-5">
+        <div class="flex items-center justify-between gap-5 px-6 sm:px-8 py-6 text-left">
           <div>
-            <p class="cap text-ink mb-1.5">Wall Mounted / Self-Cleaning</p>
-            <p class="cap-sm text-grey2">SC-02 &nbsp;·&nbsp; お掃除機能付き &nbsp;·&nbsp; 約120分</p>
+            <p class="cap-lg text-ink mb-2">Wall Mounted / Self-Cleaning</p>
+            <p class="copy-sub">SC-02 &nbsp;·&nbsp; お掃除機能付き &nbsp;·&nbsp; 約120分</p>
           </div>
-          <p class="cap text-ink whitespace-nowrap">¥22,000</p>
+          <p class="text-[17px] font-medium text-ink whitespace-nowrap">¥22,000</p>
         </div>
 
-        <div class="flex items-baseline justify-between gap-4 py-5">
+        <div class="flex items-center justify-between gap-5 px-6 sm:px-8 py-6 text-left">
           <div>
-            <p class="cap text-ink mb-1.5">Outdoor Unit</p>
-            <p class="cap-sm text-grey2">SC-03 &nbsp;·&nbsp; 室外機クリーニング &nbsp;·&nbsp; 約40分</p>
+            <p class="cap-lg text-ink mb-2">Outdoor Unit</p>
+            <p class="copy-sub">SC-03 &nbsp;·&nbsp; 室外機クリーニング &nbsp;·&nbsp; 約40分</p>
           </div>
-          <p class="cap text-ink whitespace-nowrap">¥6,000</p>
+          <p class="text-[17px] font-medium text-ink whitespace-nowrap">¥6,000</p>
         </div>
 
-        <div class="flex items-baseline justify-between gap-4 py-5">
+        <div class="flex items-center justify-between gap-5 px-6 sm:px-8 py-6 text-left">
           <div>
-            <p class="cap text-ink mb-1.5">Commercial Unit</p>
-            <p class="cap-sm text-grey2">SC-04 &nbsp;·&nbsp; 業務用エアコン &nbsp;·&nbsp; 要調査</p>
+            <p class="cap-lg text-ink mb-2">Commercial Unit</p>
+            <p class="copy-sub">SC-04 &nbsp;·&nbsp; 業務用エアコン &nbsp;·&nbsp; 要調査</p>
           </div>
           <p class="cap text-grey whitespace-nowrap">On Request</p>
         </div>
+
       </div>
 
-      <p class="cap-sm text-grey2 mt-8 text-center leading-relaxed">
+      <p class="copy-sub mt-7 text-center">
         ※ 表示は1台あたりの目安価格です（税込）。台数・機種・設置状況により変動します。
       </p>
     </div>
@@ -276,17 +288,17 @@
     <form onsubmit="return handleBookingSubmit(event)" class="grid sm:grid-cols-2 gap-x-10 gap-y-9">
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Name *</label>
+        <label class="cap text-ink block mb-1.5">Name *</label>
         <input required type="text" class="field" placeholder="山田 太郎">
       </div>
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Contact *</label>
+        <label class="cap text-ink block mb-1.5">Contact *</label>
         <input required type="text" class="field" placeholder="090-0000-0000 / mail@example.com">
       </div>
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Type</label>
+        <label class="cap text-ink block mb-1.5">Type</label>
         <select class="field">
           <option>壁掛けタイプ（標準）</option>
           <option>お掃除機能付きタイプ</option>
@@ -296,17 +308,17 @@
       </div>
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Units</label>
+        <label class="cap text-ink block mb-1.5">Units</label>
         <input type="number" min="1" value="1" class="field">
       </div>
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Preferred Date</label>
+        <label class="cap text-ink block mb-1.5">Preferred Date</label>
         <input type="date" class="field">
       </div>
 
       <div>
-        <label class="cap-sm text-grey block mb-1">Preferred Time</label>
+        <label class="cap text-ink block mb-1.5">Preferred Time</label>
         <select class="field">
           <option>午前（9:00 – 12:00）</option>
           <option>午後 1（12:00 – 15:00）</option>
@@ -316,15 +328,15 @@
       </div>
 
       <div class="sm:col-span-2">
-        <label class="cap-sm text-grey block mb-1">Notes</label>
+        <label class="cap text-ink block mb-1.5">Notes</label>
         <textarea rows="2" class="field resize-none" placeholder="例：カビの臭いが気になる / フィルターが破損している"></textarea>
       </div>
 
       <div class="sm:col-span-2 text-center pt-6">
-        <button type="submit" class="cap bg-ink text-white px-16 py-4 hover:bg-body transition-colors">
+        <button type="submit" class="cap-lg bg-ink text-white px-20 py-5 hover:bg-body transition-colors w-full sm:w-auto">
           Submit
         </button>
-        <p class="cap-sm text-grey2 mt-6">※ 本フォームはデモです。送信内容は保存されません。</p>
+        <p class="copy-sub mt-6">※ 本フォームはデモです。送信内容は保存されません。</p>
       </div>
 
     </form>
@@ -353,44 +365,44 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-5 gap-y-12 sm:gap-x-8 mb-20 sm:mb-28">
 
       <div class="text-center">
-        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
-          <span class="cap-sm text-grey2">Image</span>
+        <div class="bg-fill border border-line aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey">Image</span>
         </div>
-        <p class="cap text-ink mb-1.5">Corporate S/S Tee</p>
-        <p class="cap-sm text-grey2">SC-TS01</p>
+        <p class="cap-lg text-ink mb-2">Corporate S/S Tee</p>
+        <p class="copy-sub">SC-TS01</p>
       </div>
 
       <div class="text-center">
-        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
-          <span class="cap-sm text-grey2">Image</span>
+        <div class="bg-fill border border-line aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey">Image</span>
         </div>
-        <p class="cap text-ink mb-1.5">Corporate Cap</p>
-        <p class="cap-sm text-grey2">SC-CP01</p>
+        <p class="cap-lg text-ink mb-2">Corporate Cap</p>
+        <p class="copy-sub">SC-CP01</p>
       </div>
 
       <div class="text-center">
-        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
-          <span class="cap-sm text-grey2">Image</span>
+        <div class="bg-fill border border-line aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey">Image</span>
         </div>
-        <p class="cap text-ink mb-1.5">Utility Work Jacket</p>
-        <p class="cap-sm text-grey2">SC-JK01</p>
+        <p class="cap-lg text-ink mb-2">Utility Work Jacket</p>
+        <p class="copy-sub">SC-JK01</p>
       </div>
 
       <div class="text-center">
-        <div class="bg-fill aspect-[4/5] flex items-center justify-center mb-5">
-          <span class="cap-sm text-grey2">Image</span>
+        <div class="bg-fill border border-line aspect-[4/5] flex items-center justify-center mb-5">
+          <span class="cap-sm text-grey">Image</span>
         </div>
-        <p class="cap text-ink mb-1.5">Service Tote Bag</p>
-        <p class="cap-sm text-grey2">SC-BG01</p>
+        <p class="cap-lg text-ink mb-2">Service Tote Bag</p>
+        <p class="copy-sub">SC-BG01</p>
       </div>
 
     </div>
 
     <div class="flex flex-col sm:flex-row justify-center items-center gap-5 sm:gap-8">
-      <button type="button" onclick="openShopModal()" class="cap bg-ink text-white px-16 py-4 hover:bg-body transition-colors w-full sm:w-auto">
+      <button type="button" onclick="openShopModal()" class="cap-lg bg-ink text-white px-20 py-5 hover:bg-body transition-colors w-full sm:w-auto">
         Enter Web Store
       </button>
-      <button type="button" onclick="openShopModal()" class="cap-sm text-grey ul-link-grey hover:text-ink hover:border-ink transition-colors">
+      <button type="button" onclick="openShopModal()" class="cap text-body ul-link-grey hover:text-ink hover:border-ink transition-colors">
         Notify Me on Launch
       </button>
     </div>
@@ -405,11 +417,11 @@
   <div class="max-w-[1280px] mx-auto">
 
     <!-- ユーティリティリンク -->
-    <nav class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-20 sm:mb-24">
-      <a href="#booking" class="cap-sm text-grey hover:text-ink transition-colors">Contact</a>
-      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Store Guide</button>
-      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Privacy Policy</button>
-      <button type="button" onclick="openShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Legals</button>
+    <nav class="flex flex-wrap justify-center gap-x-9 gap-y-4 mb-20 sm:mb-24">
+      <a href="#booking" class="cap text-body hover:text-ink transition-colors">Contact</a>
+      <button type="button" onclick="openShopModal()" class="cap text-body hover:text-ink transition-colors">Store Guide</button>
+      <button type="button" onclick="openShopModal()" class="cap text-body hover:text-ink transition-colors">Privacy Policy</button>
+      <button type="button" onclick="openShopModal()" class="cap text-body hover:text-ink transition-colors">Legals</button>
     </nav>
 
     <div class="grid sm:grid-cols-3 gap-14 sm:gap-10 mb-20 sm:mb-24">
@@ -417,12 +429,13 @@
       <!-- 店舗情報 -->
       <!-- ▼ 実際の住所・電話番号に差し替えてください（現在はプレースホルダーです） -->
       <div>
-        <p class="cap text-ink mb-6">scrub inc. Headquarters</p>
-        <p class="cap-sm text-grey">
+        <p class="cap-lg text-ink mb-6">scrub inc. Headquarters</p>
+        <p class="cap text-body">
           1F SAMPLE BLDG.<br>
           0-0-0 SHIBUYA-KU TOKYO<br>
-          150-0000 JAPAN<br>
-          <br>
+          150-0000 JAPAN
+        </p>
+        <p class="cap text-grey mt-5">
           OPENING HOURS: 10:00 – 19:00<br>
           CLOSED: SUNDAY<br>
           TEL. 03-0000-0000
@@ -431,8 +444,8 @@
 
       <!-- SNS -->
       <div>
-        <p class="cap text-ink mb-6">Instagram</p>
-        <p class="cap-sm text-grey">
+        <p class="cap-lg text-ink mb-6">Instagram</p>
+        <p class="cap text-body">
           @scrub.inc<br>
           <br>
           scrb.cleaning
@@ -441,11 +454,11 @@
 
       <!-- ニュースレター -->
       <div>
-        <p class="cap text-ink mb-6">Join Our Newsletter</p>
-        <p class="cap-sm text-grey mb-6">Be the first to know</p>
+        <p class="cap-lg text-ink mb-6">Join Our Newsletter</p>
+        <p class="cap text-grey mb-6">Be the first to know</p>
         <form onsubmit="return handleNewsletter(event)" class="flex items-end gap-4">
           <input required type="email" class="field flex-1" placeholder="mail@example.com" aria-label="メールアドレス">
-          <button type="submit" class="cap-sm text-ink ul-link whitespace-nowrap hover:text-grey hover:border-grey transition-colors pb-2">
+          <button type="submit" class="cap text-ink ul-link whitespace-nowrap hover:text-grey hover:border-grey transition-colors pb-2">
             Join
           </button>
         </form>
@@ -462,7 +475,7 @@
           <text x="300" y="188" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="300" fill="#888888" letter-spacing="1.5" text-anchor="middle">scrb.cleaning | @scrub.inc | TOKYO, JAPAN</text>
         </svg>
       </div>
-      <p class="cap-sm text-grey2">© scrub inc.</p>
+      <p class="cap text-grey">© scrub inc.</p>
     </div>
 
   </div>
@@ -476,13 +489,13 @@
 
   <div class="fade-in relative bg-white border border-line max-w-sm w-full">
     <div class="flex items-center justify-between px-6 py-4 border-b border-line">
-      <p class="cap-sm text-grey">Notice</p>
-      <button type="button" onclick="closeShopModal()" class="cap-sm text-grey hover:text-ink transition-colors">Close</button>
+      <p class="cap text-grey">Notice</p>
+      <button type="button" onclick="closeShopModal()" class="cap text-body hover:text-ink transition-colors">Close</button>
     </div>
 
     <div class="px-8 py-12 text-center">
-      <p class="cap text-ink mb-8">Web Store — Coming Soon</p>
-      <p class="copy text-grey mb-10">
+      <p class="cap-lg text-ink mb-8">Web Store — Coming Soon</p>
+      <p class="copy mb-10">
         公式オンラインショップは<br>
         近日オープンいたします。<br>
         <br>
@@ -490,7 +503,7 @@
         詳細は本サイトおよび公式アカウントにて<br>
         ご案内します。
       </p>
-      <button type="button" onclick="closeShopModal()" class="cap bg-ink text-white w-full py-4 hover:bg-body transition-colors">
+      <button type="button" onclick="closeShopModal()" class="cap-lg bg-ink text-white w-full py-5 hover:bg-body transition-colors">
         Close
       </button>
     </div>
