@@ -57,6 +57,14 @@
     text-transform: uppercase;
     line-height: 1.6;
   }
+  /* 導線ブロックの見出し（cap より一段大きく、視認性を確保） */
+  .cap-lg {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    font-weight: 500;
+  }
   /* セクション見出し（大きな装飾文字は使わない） */
   .sec-title {
     font-size: 13px;
@@ -140,24 +148,27 @@
 <!-- 2つの導線（罫線を使わず余白で区切る） -->
 <!-- ============================================================ -->
 <section class="px-5 sm:px-8 pt-20 pb-20 sm:pt-28 sm:pb-32">
-  <div class="max-w-4xl mx-auto grid sm:grid-cols-2 gap-14 sm:gap-20 text-center">
+  <!-- 幅を絞って2つを近づけ、細罫で領域を明示。文字色も一段濃くして視認性を確保 -->
+  <div class="max-w-3xl mx-auto grid sm:grid-cols-2 gap-5 sm:gap-8 text-center">
 
     <!-- A -->
-    <a href="#booking" class="group block">
-      <p class="cap-sm text-grey2 mb-5">01</p>
-      <p class="cap text-ink mb-4">Air Conditioner Cleaning</p>
-      <p class="copy text-grey mb-7">エアコンクリーニングを予約する</p>
-      <span class="cap-sm text-ink ul-link inline-block group-hover:text-grey group-hover:border-grey transition-colors">
+    <a href="#booking"
+       class="group block border border-line px-6 py-12 sm:py-14 hover:border-ink hover:bg-fill transition-colors">
+      <p class="cap-sm text-grey mb-6">01</p>
+      <p class="cap-lg text-ink mb-4">Air Conditioner Cleaning</p>
+      <p class="text-[14px] leading-relaxed text-body mb-8">エアコンクリーニングを予約する</p>
+      <span class="cap text-ink ul-link inline-block">
         Book Now
       </span>
     </a>
 
     <!-- B -->
-    <button type="button" onclick="openShopModal()" class="group block w-full">
-      <p class="cap-sm text-grey2 mb-5">02</p>
-      <p class="cap text-ink mb-4">Apparel Web Store</p>
-      <p class="copy text-grey mb-7">アパレルショップを見る</p>
-      <span class="cap-sm text-grey ul-link-grey inline-block group-hover:text-ink group-hover:border-ink transition-colors">
+    <button type="button" onclick="openShopModal()"
+       class="group block w-full border border-line px-6 py-12 sm:py-14 hover:border-ink hover:bg-fill transition-colors">
+      <p class="cap-sm text-grey mb-6">02</p>
+      <p class="cap-lg text-ink mb-4">Apparel Web Store</p>
+      <p class="text-[14px] leading-relaxed text-body mb-8">アパレルショップを見る</p>
+      <span class="cap text-body ul-link-grey inline-block group-hover:text-ink group-hover:border-ink transition-colors">
         Coming Soon
       </span>
     </button>
