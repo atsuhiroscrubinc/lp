@@ -104,6 +104,28 @@
   .field::placeholder { color: #A6A6A6; }
   select.field { appearance: none; background-image: none; }
 
+  /* チェックボックス：白黒基調に合わせて accent-color を黒に */
+  .chk {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    color: #1A1A1A;
+    cursor: pointer;
+  }
+  .chk input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: #000000;
+    border-radius: 0;
+    flex-shrink: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .chk:hover { color: #000000; }
+
   /* 罫線下線リンク（参照サイトのテキストリンク表現） */
   .ul-link { border-bottom: 1px solid #000; padding-bottom: 2px; }
   .ul-link-grey { border-bottom: 1px solid #B3B3B3; padding-bottom: 2px; }
@@ -282,6 +304,7 @@
 
     <p class="copy text-body text-center mb-16 sm:mb-20">
       必要事項をご記入のうえ送信してください。<br>
+      希望日時は第3希望までご指定いただけます。<br>
       担当より折り返しご連絡し、日程を確定します。
     </p>
 
@@ -312,19 +335,66 @@
         <input type="number" min="1" value="1" class="field">
       </div>
 
-      <div>
-        <label class="cap text-ink block mb-1.5">Preferred Date</label>
-        <input type="date" class="field">
-      </div>
+      <!-- 希望日時：第1〜第3希望。時間帯は複数選択可 -->
+      <div class="sm:col-span-2 pt-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 mb-7">
+          <p class="cap-lg text-ink">Preferred Date &amp; Time</p>
+          <p class="copy-sub">第1希望は必須／時間帯は複数選択できます</p>
+        </div>
 
-      <div>
-        <label class="cap text-ink block mb-1.5">Preferred Time</label>
-        <select class="field">
-          <option>午前（9:00 – 12:00）</option>
-          <option>午後 1（12:00 – 15:00）</option>
-          <option>午後 2（15:00 – 18:00）</option>
-          <option>夕方（18:00 – 20:00）</option>
-        </select>
+        <!-- 第1希望 -->
+        <div class="border-t border-line pt-7 pb-8 grid sm:grid-cols-12 gap-x-8 gap-y-6 items-start">
+          <p class="cap-lg text-ink sm:col-span-2">1st *</p>
+          <div class="sm:col-span-4">
+            <label class="cap text-grey block mb-1.5">Date</label>
+            <input required type="date" class="field" aria-label="第1希望日">
+          </div>
+          <div class="sm:col-span-6">
+            <p class="cap text-grey mb-3.5">Time</p>
+            <div class="flex flex-wrap gap-x-7 gap-y-3.5">
+              <label class="chk"><input type="checkbox" name="time1" value="午前"> <span>午前 9:00–12:00</span></label>
+              <label class="chk"><input type="checkbox" name="time1" value="午後1"> <span>午後 1 12:00–15:00</span></label>
+              <label class="chk"><input type="checkbox" name="time1" value="午後2"> <span>午後 2 15:00–18:00</span></label>
+              <label class="chk"><input type="checkbox" name="time1" value="夕方"> <span>夕方 18:00–20:00</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 第2希望 -->
+        <div class="border-t border-line pt-7 pb-8 grid sm:grid-cols-12 gap-x-8 gap-y-6 items-start">
+          <p class="cap-lg text-grey sm:col-span-2">2nd</p>
+          <div class="sm:col-span-4">
+            <label class="cap text-grey block mb-1.5">Date</label>
+            <input type="date" class="field" aria-label="第2希望日">
+          </div>
+          <div class="sm:col-span-6">
+            <p class="cap text-grey mb-3.5">Time</p>
+            <div class="flex flex-wrap gap-x-7 gap-y-3.5">
+              <label class="chk"><input type="checkbox" name="time2" value="午前"> <span>午前 9:00–12:00</span></label>
+              <label class="chk"><input type="checkbox" name="time2" value="午後1"> <span>午後 1 12:00–15:00</span></label>
+              <label class="chk"><input type="checkbox" name="time2" value="午後2"> <span>午後 2 15:00–18:00</span></label>
+              <label class="chk"><input type="checkbox" name="time2" value="夕方"> <span>夕方 18:00–20:00</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 第3希望 -->
+        <div class="border-t border-b border-line pt-7 pb-8 grid sm:grid-cols-12 gap-x-8 gap-y-6 items-start">
+          <p class="cap-lg text-grey sm:col-span-2">3rd</p>
+          <div class="sm:col-span-4">
+            <label class="cap text-grey block mb-1.5">Date</label>
+            <input type="date" class="field" aria-label="第3希望日">
+          </div>
+          <div class="sm:col-span-6">
+            <p class="cap text-grey mb-3.5">Time</p>
+            <div class="flex flex-wrap gap-x-7 gap-y-3.5">
+              <label class="chk"><input type="checkbox" name="time3" value="午前"> <span>午前 9:00–12:00</span></label>
+              <label class="chk"><input type="checkbox" name="time3" value="午後1"> <span>午後 1 12:00–15:00</span></label>
+              <label class="chk"><input type="checkbox" name="time3" value="午後2"> <span>午後 2 15:00–18:00</span></label>
+              <label class="chk"><input type="checkbox" name="time3" value="夕方"> <span>夕方 18:00–20:00</span></label>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="sm:col-span-2">
@@ -525,8 +595,17 @@
   }
   function handleBookingSubmit(e) {
     e.preventDefault();
+    const form = e.target;
+
+    // 第1希望は時間帯を最低1つ選択していただく
+    const first = form.querySelectorAll('input[name="time1"]:checked');
+    if (first.length === 0) {
+      alert('第1希望の時間帯を1つ以上お選びください。');
+      return false;
+    }
+
     alert('ご予約リクエストを受け付けました（デモ）。担当より折り返しご連絡いたします。');
-    e.target.reset();
+    form.reset();
     return false;
   }
   function handleNewsletter(e) {
